@@ -1,0 +1,102 @@
+# Visual Studio temporary files
+.vs/
+*.vscode/
+*.suo
+*.ntvs*
+*~$*
+*.bak
+*.user
+*.vspscc
+*.vssscc
+*.pidb
+*.log
+*.bin
+*.cache
+*.dll
+*.dll.refresh
+*.dbmdl
+*.jfm
+*.pdm
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tlh
+*.tmp
+*.tmp_proj
+*_i.c
+*_p.c
+*.ilk
+*.ncb
+*.log
+*.obj
+*.opensdf
+*.sdf
+*.sln.docstates
+
+# Visual Studio 2015 and newer
+.vs2015
+.vs2017
+.vs2019
+*.csproj.user
+
+# Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+
+# Packages
+## Packages folder
+packages/
+## NuGet v3's project.json files
+project.lock.json
+## Visual Studio 2017 and Visual Studio 2019
+.vs2017/
+.vs2019/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUNIT
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Build Results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Ll]ogFiles/
+[Tt]emp/
+[Tt]ests/
+[Tt]estResults/
+[Rr]eports/
+[Bb]uild[Ll]ogs/
+[Oo]ut/
+[Test]Results/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio Code
+.vscode/
