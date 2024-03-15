@@ -13,13 +13,14 @@ Given the users, followers and tweets, the application displays a simulated twit
 ## Installation & Exexcution
 VISUAL STUDIO
 1. Clone the repository or download the ZIP file.
-2. Open the solution file ([ProjectName].sln) in Visual Studio.
+2. Open the solution file (TwitterFeedSimulator.sln) in Visual Studio.
 3. Build the solution to restore dependencies.
 5. Run the application.
 
 VISUAL STUDIO CODE OR ANY OTHER IDE
 1. Clone the repository or download the ZIP file.
 2. Open the solution in the IDE and ensure you are in the root of the folder
+3. "cd TwitterFeedSimulator"
 3. Run "dotnet clean"
 4. Run "dotnet build"
 5. Run "dotnet run"
@@ -42,7 +43,7 @@ VISUAL STUDIO
 
 VISUAL STUDIO CODE
 1. Clone the repository or download the ZIP file.
-2. cd into TwitterFeedSimulator/tests
+2. cd into TwitterFeedSimulator.Tests
 3. run "dotnet test"
 
 ## Contact
