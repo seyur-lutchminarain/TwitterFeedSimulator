@@ -35,7 +35,8 @@ VISUAL STUDIO CODE OR ANY OTHER IDE
 ## Run tests
 VISUAL STUDIO
 1. Clone the repository or download the ZIP file.
-2. Open the solution file ([ProjectName].sln) in Visual Studio.
+2. Open the solution file (TwitterFeedSimulator.sln) in Visual Studio.
+3. Add the test project to your solution by clicking on the root solution > Add > Existing Project > Select TwitterFeedSimulator.Tests.csproj
 3. Build the solution to restore dependencies.
 4. Run the test command via visual studio
 
