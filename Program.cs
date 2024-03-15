@@ -4,17 +4,25 @@ using System.IO;
 using System.Linq;
 using TwitterFeedSimulator.Domain.Models;
 using TwitterFeedSimulator.Application.Services;
+using TwitterFeedSimulator.Application.Interfaces;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("TwitterFeedSimulator.Tests")]
 namespace TwitterFeedSimulator
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+
             // Instantiate instance of TwitterFeedSimulatorClass
             var _twitterFeedSimulator = new TwitterFeedSimulatorService();
+            
+            // If you are using VS Code or any other IDE use this
+            const string INPUT_DATA_ROOT = @"Domain/Core/Stubs";
 
-            const string INPUT_DATA_ROOT = @"../../../Domain/Core/Stubs";
+            // If you are using visual studio specifically use this
+            const string VS_INPUT_DATA_ROOT = @"../../../Domain/Core/Stubs";
 
             string userFilePath = INPUT_DATA_ROOT + "/user.txt";
             string tweetFilePath = INPUT_DATA_ROOT + "/tweet.txt";

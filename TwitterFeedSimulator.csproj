@@ -7,6 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>   
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Domain\" />
     <None Remove="Domain\Models\" />
