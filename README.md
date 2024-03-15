@@ -8,11 +8,21 @@ The second file contains tweets.
 Given the users, followers and tweets, the application displays a simulated twitter feed for each user to the console.
 
 ## Installation & Exexcution
+VISUAL STUDIO
 1. Clone the repository or download the ZIP file.
 2. Open the solution file ([ProjectName].sln) in Visual Studio.
 3. Build the solution to restore dependencies.
 4. Add a break point on Line 40 of the Program.cs file to verify the terminal output
 5. Run the application.
+
+VISUAL STUDIO CODE OR ANY OTHER IDE
+1. Clone the repository or download the ZIP file.
+2. Open the solution in the IDE and ensure you are in the root of the folder
+3. Run "dotnet clean"
+4. Run "dotnet build"
+5. Run "dotnet run"
+6. Add a break point on Line 40 of the Program.cs file to verify the terminal output
+7. Run the application.
 
 ## Contributing
 1. Fork the repository.
