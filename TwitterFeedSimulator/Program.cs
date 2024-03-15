@@ -17,12 +17,13 @@ namespace TwitterFeedSimulator
 
             // Instantiate instance of TwitterFeedSimulatorClass
             var _twitterFeedSimulator = new TwitterFeedSimulatorService();
-            
-            // If you are using VS Code or any other IDE use this
-            const string INPUT_DATA_ROOT = @"Domain/Core/Stubs";
 
+            // If you are using VS Code or any other IDE use this
+            string INPUT_DATA_ROOT = @"Domain/Core/Stubs";
+
+            // !IMPORTANT
             // If you are using visual studio specifically use this
-            const string VS_INPUT_DATA_ROOT = @"../../../Domain/Core/Stubs";
+            //INPUT_DATA_ROOT = @"../../../Domain/Core/Stubs";
 
             string userFilePath = INPUT_DATA_ROOT + "/user.txt";
             string tweetFilePath = INPUT_DATA_ROOT + "/tweet.txt";
@@ -41,6 +42,9 @@ namespace TwitterFeedSimulator
             {
                 _twitterFeedSimulator.PrintTweetsForUserAndFollowers(user, tweets, userFollowers);
             });
+
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
     }
 }
