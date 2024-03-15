@@ -1,6 +1,9 @@
 # Project Name
 TwitterFeedSimulator
 
+## IMPORTANT
+Please take note of line 21 in the Program.cs file
+
 ## Description
 TwitterFeedSimulator is a C# console application that simulates a twitter-like feed. It makes use of 2 text files contained in /Domain/Core/Stubs.
 The first file contains a list of users and their followers.
