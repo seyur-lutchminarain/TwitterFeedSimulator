@@ -6,7 +6,10 @@ namespace TwitterFeedSimulator.Application.Services
 {
 	public class TwitterFeedSimulatorService : ITwitterFeedSimulatorService
 	{
-		public TwitterFeedSimulatorService()
+
+        private ExceptionHandlerService _exceptionHandlerService = new ExceptionHandlerService();
+
+        public TwitterFeedSimulatorService()
 		{
 		}
 
@@ -48,26 +51,40 @@ namespace TwitterFeedSimulator.Application.Services
         /// <returns>List of tweets</returns>
         public List<Tweet> ReadTweetFile(string tweetFilePath)
         {
-			// Initialise empty response
-			var result = new List<Tweet>();
+            try
+            {
+                if (string.IsNullOrEmpty(tweetFilePath))
+                    throw new ArgumentException("Tweet file path cannot be null or empty.", nameof(tweetFilePath));
 
-			// Read all lines from the text file
-			List<string> lines = File.ReadAllLines(tweetFilePath).ToList();
+                // Initialise empty response
+                var result = new List<Tweet>();
 
-			// Go through each line
-			lines.ForEach((line) =>
-			{
-				// Split to get the user and the associated tweet
-				var partsOfLine = line.Split("> ").ToList();
+                // Read all lines from the text file
+                List<string> lines = File.ReadAllLines(tweetFilePath).ToList();
 
-				var user = partsOfLine.FirstOrDefault();
-				var message = partsOfLine.LastOrDefault();
+                if (lines.Count <= 0)
+                    throw new IOException($"Tweet File content is empty. No data to read from {tweetFilePath}.");
 
-				// Add to Tweet model
-				result.Add(new Tweet(user, message));
-			});
+                // Go through each line
+                lines.ForEach((line) =>
+                {
+                    // Split to get the user and the associated tweet
+                    var partsOfLine = line.Split("> ").ToList();
 
-			return result;
+                    var user = partsOfLine.FirstOrDefault();
+                    var message = partsOfLine.LastOrDefault();
+
+                    // Add to Tweet model
+                    result.Add(new Tweet(user, message));
+                });
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _exceptionHandlerService.HandleException(ex);
+                return null;
+            }
         }
 
         /// <summary>
@@ -78,39 +95,57 @@ namespace TwitterFeedSimulator.Application.Services
         /// <returns>Dictionary of users and a list of their followers</returns>
         public Dictionary<string, List<string>> ReadUserFile(string userFilePath)
         {
-			// Initialise 
-			var result = new Dictionary<string, List<string>>();
-
-            // Read all lines from the text file
-            List<string> lines = File.ReadAllLines(userFilePath).ToList();
-
-            // Go through each line
-            lines.ForEach((line) =>
+			try
 			{
-				// Split to get the user and their associated followers
-				var partsOfLine = line.Split(" follows ");
+                if (string.IsNullOrEmpty(userFilePath))
+                    throw new ArgumentException("User file path cannot be null or empty.", nameof(userFilePath));
 
-				var user = partsOfLine.FirstOrDefault();
-				var following = partsOfLine.LastOrDefault();
+                // Initialise 
+                var result = new Dictionary<string, List<string>>();
 
-				// Create a list structure for the associated users' followers
-				result[user] = RetrieveUserFollowers(following);
-
-				// find any missing entries -> "follower users" are still users to be considered
-				var followingList = following.Split(", ").ToList();
-
-				// Add these users to the list
-				followingList.ForEach((userFollowing) =>
-				{
-					if (!result.ContainsKey(userFollowing))
-					{
-						result[userFollowing] = new List<string>();
-					}
-				});
+                // Read all lines from the text file
+                List<string> lines = File.ReadAllLines(userFilePath).ToList();
 
 
-			});
-			return result;
+                if (lines.Count <= 0)
+                    throw new IOException($"User File content is empty. No data to read from {userFilePath}.");
+
+                // Go through each line
+                lines.ForEach((line) =>
+                {
+                    // Split to get the user and their associated followers
+                    var partsOfLine = line.Split(" follows ");
+
+                    var user = partsOfLine.FirstOrDefault();
+                    var following = partsOfLine.LastOrDefault();
+
+                    // Create a list structure for the associated users' followers
+                    result[user] = RetrieveUserFollowers(following);
+
+                    // find any missing entries -> "follower users" are still users to be considered
+                    var followingList = following.Split(", ").ToList();
+
+                    // Add these users to the list
+                    followingList.ForEach((userFollowing) =>
+                    {
+                        if (!result.ContainsKey(userFollowing))
+                        {
+                            result[userFollowing] = new List<string>();
+                        }
+                    });
+
+
+                });
+                return result;
+
+
+            }
+			catch (Exception ex)
+			{
+				_exceptionHandlerService.HandleException(ex);
+				return null;
+			}
+			
         }
 
 		private List<string> RetrieveUserFollowers(string followers)

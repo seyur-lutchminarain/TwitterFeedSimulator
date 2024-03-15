@@ -7,6 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>    
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Domain\" />
     <None Remove="Domain\Models\" />
