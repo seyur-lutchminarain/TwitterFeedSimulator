@@ -50,6 +50,51 @@ namespace TwitterFeedSimulator.Tests
         }
 
         [Test]
+        public void PrintTweetsForMultipleUsersAndTweets_Should_OrganiseDataCorrectly()
+        {
+            // Arrange
+            userFilePath = INPUT_DATA_ROOT + "/user1.txt";
+            tweetFilePath = INPUT_DATA_ROOT + "/tweet1.txt";
+
+            // Act
+            var users = _service.ReadUserFile(userFilePath);
+            var tweets = _service.ReadTweetFile(tweetFilePath);
+
+            // Assert
+            Assert.That(users.Count, Is.EqualTo(7));
+            Assert.That(tweets.Count, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void PrintTweetsForMultipleUsersAndTweets_Should_ProduceTheCorrectOutput()
+        {
+            // Arrange
+            userFilePath = INPUT_DATA_ROOT + "/user1.txt";
+            tweetFilePath = INPUT_DATA_ROOT + "/tweet1.txt";
+
+            var userFollowers = _service.ReadUserFile(userFilePath);
+            var tweets = _service.ReadTweetFile(tweetFilePath);
+
+
+            var sortedUsers = userFollowers.Keys.OrderBy(u => u).ToList();
+            using (StringWriter sw = new StringWriter())
+            {
+                System.Console.SetOut(sw);
+
+                // Act
+                sortedUsers.ForEach((user) =>
+                {
+                    _service.PrintTweetsForUserAndFollowers(user, tweets, userFollowers);
+                });
+
+                // Assert
+                var expectedResponse = "Alan\n\t@Alan: If you have a procedure with 10 parameters, you probably missed some.\n\t@Jack: Real programmers can write assembly code in any language.\n\t@Martin: Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.\n\t@Alan: Random numbers should not be generated with a method chosen at random.\n\t@Martin: There's no place like 127.0.0.1.\nEmma\n\t@Martin: Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.\n\t@Sarah: Programming is like sex. One mistake and you have to support it for the rest of your life.\n\t@Lily: It's not a bug — it's an undocumented feature.\n\t@Emma: Debugging is like hunting elephants. You only get a feel for how big they are when you've taken one down.\n\t@Martin: There's no place like 127.0.0.1.\nJack\n\t@Jack: Real programmers can write assembly code in any language.\n\t@Martin: Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.\n\t@Martin: There's no place like 127.0.0.1.\nLily\n\t@Alan: If you have a procedure with 10 parameters, you probably missed some.\n\t@Alan: Random numbers should not be generated with a method chosen at random.\n\t@Lily: It's not a bug — it's an undocumented feature.\nMartin\n\t@Martin: Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.\n\t@Emma: Debugging is like hunting elephants. You only get a feel for how big they are when you've taken one down.\n\t@Martin: There's no place like 127.0.0.1.\nSarah\n\t@Sarah: Programming is like sex. One mistake and you have to support it for the rest of your life.\n\t@Lily: It's not a bug — it's an undocumented feature.\nWard\n\t@Ward: There are only two hard things in Computer Science: cache invalidation, naming things and off-by-1 errors.\n\t@Sarah: Programming is like sex. One mistake and you have to support it for the rest of your life.\n\t@Emma: Debugging is like hunting elephants. You only get a feel for how big they are when you've taken one down.\n\t@Ward: To iterate is human, to recurse divine.\n";
+                var result = sw.ToString();
+                Assert.That(expectedResponse, Is.EqualTo(sw.ToString()));
+            }
+        }
+
+        [Test]
         public void ReadUserFile_WhenFilePathIsValid_ReturnsDictionaryOfUsersAndFollowers()
         {
             // Arrange & Act

@@ -1,0 +1,10 @@
+﻿Alan> If you have a procedure with 10 parameters, you probably missed some.
+Ward> There are only two hard things in Computer Science: cache invalidation, naming things and off-by-1 errors.
+Jack> Real programmers can write assembly code in any language.
+Martin> Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.
+Alan> Random numbers should not be generated with a method chosen at random.
+Sarah> Programming is like sex. One mistake and you have to support it for the rest of your life.
+Lily> It's not a bug — it's an undocumented feature.
+Emma> Debugging is like hunting elephants. You only get a feel for how big they are when you've taken one down.
+Ward> To iterate is human, to recurse divine.
+Martin> There's no place like 127.0.0.1.
