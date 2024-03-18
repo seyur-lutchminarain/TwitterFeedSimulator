@@ -23,10 +23,10 @@ namespace TwitterFeedSimulator
 
             // !IMPORTANT
             // If you are using visual studio specifically use this
-            //INPUT_DATA_ROOT = @"../../../Domain/Core/Stubs";
+            INPUT_DATA_ROOT = @"../../../Domain/Core/Stubs";
 
-            string userFilePath = INPUT_DATA_ROOT + "/user.txt";
-            string tweetFilePath = INPUT_DATA_ROOT + "/tweet.txt";
+            string userFilePath = INPUT_DATA_ROOT + "/user1.txt";
+            string tweetFilePath = INPUT_DATA_ROOT + "/tweet1.txt";
 
             // Read users and followers
             var userFollowers = _twitterFeedSimulator.ReadUserFile(userFilePath);

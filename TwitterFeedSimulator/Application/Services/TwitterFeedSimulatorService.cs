@@ -120,7 +120,22 @@ namespace TwitterFeedSimulator.Application.Services
                     var following = partsOfLine.LastOrDefault();
 
                     // Create a list structure for the associated users' followers
-                    result[user] = RetrieveUserFollowers(following);
+
+                    // if the user already exists then we just append to the list
+                    if (result.ContainsKey(user))
+                    {
+
+                        var followingUsers = RetrieveUserFollowers(following).ToList();
+                        followingUsers.ForEach((followingUser) =>
+                        {
+                            result[user].Add(followingUser);
+                        });
+                    }
+                    // else we set the users following to the resulting list
+                    else
+                    {
+                        result[user] = RetrieveUserFollowers(following);
+                    }
 
                     // find any missing entries -> "follower users" are still users to be considered
                     var followingList = following.Split(", ").ToList();
