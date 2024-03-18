@@ -1,0 +1,10 @@
+﻿Alan follows Jack
+Jack follows Martin
+Alan follows Martin, Jack
+Emma follows Sarah
+Sarah follows Lily
+Emma follows Lily, Martin
+Ward follows Sarah
+Martin follows Emma
+Ward follows Emma, Sarah
+Lily follows Alan
